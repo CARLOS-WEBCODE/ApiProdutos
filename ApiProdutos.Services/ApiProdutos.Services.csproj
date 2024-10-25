@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Configurations\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Mappings\" />
     <Folder Include="Responses\" />
     <Folder Include="Requests\" />
