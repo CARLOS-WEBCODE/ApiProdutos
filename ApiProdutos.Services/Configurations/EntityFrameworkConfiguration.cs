@@ -6,7 +6,7 @@ namespace ApiProdutos.Services.Configurations;
 /// <summary>
 /// Classe de configuração do EntityFramework no AspNet
 /// </summary>
-public class EntityFrameworkConfiguration
+public static class EntityFrameworkConfiguration
 {
     public static void AddEntityFramework(WebApplicationBuilder builder) 
     {
