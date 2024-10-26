@@ -24,7 +24,10 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="TestCases\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiProdutos.Infra.Data\ApiProdutos.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>
