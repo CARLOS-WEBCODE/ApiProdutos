@@ -37,4 +37,27 @@ public class ProdutosController : ControllerBase
             return StatusCode(500, new { message = ex.Message });
         }
     }
+
+    [HttpPut]
+    public IActionResult Put(ProdutoPutRequest request)
+    {
+        try
+        {
+            var produto = _produtoRepository.Get(request.IdProduto);
+
+            if (produto == null)
+                return StatusCode(422, new { message = "ID inválido. Produto não encontrado." });
+
+            _mapper.Map(request, produto);
+
+            _produtoRepository.Update(produto);
+
+            var response = _mapper.Map<ProdutoGetResponse>(produto);
+            return StatusCode(200, response);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = ex.Message});
+        }
+    }
 }
