@@ -4,7 +4,8 @@ public class CorsConfiguration
 {
     public static void AddCors(WebApplicationBuilder builder)
     {
-        builder.Services.AddCors(s => s.AddPolicy("DefaultPolicy", builder =>
+        builder.Services.AddCors(s => s.AddPolicy("DefaultPolicy", 
+        builder =>
         {
             builder
             .AllowAnyOrigin()
