@@ -60,4 +60,63 @@ public class ProdutosController : ControllerBase
             return StatusCode(500, new { message = ex.Message});
         }
     }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(Guid id)
+    {
+        try
+        {
+            var produto = _produtoRepository.Get(id);
+
+            if (produto == null)
+                return StatusCode(422, new { message = "ID inválido. Produto não encontrado." });
+
+            _produtoRepository.Delete(produto);
+
+            var response = _mapper.Map<ProdutoGetResponse>(produto);
+            return StatusCode(200, response);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = ex.Message });
+        }
+    }
+
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        try
+        {
+            var produtos = _produtoRepository.GetAll();
+            var response = _mapper.Map<List<ProdutoGetResponse>>(produtos);
+
+            if (response.Count == 0)
+                return StatusCode(204); //NO CONTENT
+
+            return StatusCode(200, response);
+        }
+        catch(Exception ex)
+        {
+            return StatusCode(500, new {message = ex.Message});
+        }
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult GetById(Guid id)
+    {
+        try
+        {
+            var produto = _produtoRepository.Get(id);
+            var response = _mapper.Map<ProdutoGetResponse>(produto);
+
+            if (response == null)
+                return StatusCode(204); //NO CONTENT
+
+            return StatusCode(200, response);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { ex.Message });
+        }
+    }
 }
