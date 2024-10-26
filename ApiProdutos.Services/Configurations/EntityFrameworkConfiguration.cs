@@ -1,5 +1,6 @@
 ﻿using ApiProdutos.Infra.Data.Contexts;
 using ApiProdutos.Infra.Data.Interfaces;
+using ApiProdutos.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiProdutos.Services.Configurations;
@@ -15,6 +16,6 @@ public static class EntityFrameworkConfiguration
         builder.Services.AddDbContext<SqlServerContext>
             (options => options.UseSqlServer(connectionString));
 
-        builder.Services.AddTransient<IProdutoRepository, IProdutoRepository>();
+        builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
     }
 }

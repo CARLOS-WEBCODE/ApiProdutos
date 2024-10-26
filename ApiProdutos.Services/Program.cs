@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-#region
+#region Configurações do projeto AspNet
 
 AutoMapperConfiguration.AddAutoMapper(builder);
 CorsConfiguration.AddCors(builder);
